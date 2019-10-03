@@ -4,21 +4,58 @@
 
  <div class="container">
 
-   <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="{{article.title}} image">
-   </div>
-
-   <div class="row">
-     <h1 class="text-center">{{article.title}}</h1>
-   </div>
-
-   <div class="row">
-     <p>{{article.post}}</p>
-   </div>
-
-   <div class="row">
-     <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
-   </div>
+        <article class="media content-section mt-2 pt-2">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#!">{{article.editor.first_name}}</a>
+                    <small class="text-muted mr-2">{{article.pub_date|timesince}}</small>
+                    <small>Tags: {{ news_item.tags.all|join:", "}} </small>
+                  </div>
+                  <h2 class="article-title mt-2 pb-2 pt-2 font-weight-bold">{{article.title}}</h2>
+    
+                  {% if article.article_image %}
+                    <img class="img-fluid" src="{{article.article_image.url}}" alt="{{article.title}} image">
+                    {% else %}
+                    <img class="img-fluid" src="https://source.unsplash.com/random/600x400" alt="{{article.title}} image">
+                  {% endif %}
+    
+                  <p class="article-content pt-2 mt-2">{{article.post}} </p>
+    
+                                <!-- Section: Share buttons -->
+                <section class="text-center mb-4 smooth-scroll social-buttons">
+    
+                    <hr>
+      
+                    <p class="font-weight-bold">Spreed the word: </p>
+      
+                    <!--Facebook-->
+                    <button type="button" class="btn btn-sm btn-info my-0">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+      
+                    <!--Twitter-->
+                    <button type="button" class="btn btn-sm btn-info my-0">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+      
+                    <!--Twitter-->
+                    <button type="button" class="btn btn-sm btn-info my-0">
+                      <i class="fab fa-linkedin-in"></i>
+                    </button>
+      
+                    <!-- Comments -->
+                    <a role="button" class="btn btn-sm btn-unique my-0 mt-xs-4" href="#comments">
+                      <i class="far fa-comments mr-1"></i> Add comment
+                    </a>
+                    
+                    <hr>
+      
+                  </section>
+                  <!-- Section: Share buttons -->
+                  </p>
+                </div>
+                </article>
+    
 
  </div>
 

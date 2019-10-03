@@ -5,6 +5,7 @@ from django.shortcuts import render
 from .models import Article,tags
 
 
+tagss = tags.get_tags()
 # Create your views here.
 def welcome(request):
     return render(request, 'welcome.html')
@@ -67,4 +68,5 @@ def article(request, article_id):
     except DoesNotExist:
         raise Http404()
     
+
     return render(request, "all-news/article.html", {"article":article})
