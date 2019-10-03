@@ -9,7 +9,7 @@
                   <div class="article-metadata">
                     <a class="mr-2" href="#!">{{article.editor.first_name}}</a>
                     <small class="text-muted mr-2">{{article.pub_date|timesince}}</small>
-                    <small>Tags: {{ news_item.tags.all|join:", "}} </small>
+                    <small>Tags: {{ article.tags.all|join:", "}} </small>
                   </div>
                   <h2 class="article-title mt-2 pb-2 pt-2 font-weight-bold">{{article.title}}</h2>
     
