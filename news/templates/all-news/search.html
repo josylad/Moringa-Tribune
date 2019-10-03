@@ -17,9 +17,50 @@
 
   {% if articles %}
     {% for article in articles %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{article.title}}</h1>
-      </div>
+      <section class="my-5">
+
+            <div class="row">
+          
+              <!-- Grid column -->
+              <div class="col-lg-5 col-xl-4">
+          
+                <!-- Featured image -->
+                <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+                    <img src="{{article.article_image.url}}"  class="img-responsive" alt="{{article.title}} image">
+                <div class="mask rgba-white-slight"></div>
+                
+                </div>
+          
+              </div>
+              <!-- Grid column -->
+          
+              <!-- Grid column -->
+              <div class="col-lg-7 col-xl-8">
+                
+                <!-- Post title -->
+                <h3><a class="font-weight-bold mb-3 black-text" href="/article/{{article.id}}">{{ article.title }}</a></h3>
+                <!-- Excerpt -->
+                <p class="dark-grey-text">{{ article.post|truncatechars:400 }}</p>
+                <!-- Post data -->
+                <p>by <a class="font-weight-bold green-text" href="#!">{{article.editor.first_name}}</a>, {{article.pub_date|timesince}} 
+                  <span class="ml-4"></span> <span> Tags: {{ article.tags.all|join:", "}}
+                      
+                  </span>
+                 
+                </p>
+                <!-- Read more button -->
+              <a class="btn success-color-dark text-white btn-md" href="/article/{{article.id}}">Read more</a>
+              </div>
+              <!-- Grid column -->
+          
+            </div>
+            <!-- Grid row -->
+          
+            <hr class="my-5">
+          
+            
+          
+          </section>
     {% endfor %}
   {% endif %}
   </div>
