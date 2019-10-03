@@ -1,0 +1,68 @@
+{%extends 'all-news/base.html'%}
+
+{% block content %}
+
+{{block.super}}
+
+<div class="container">
+
+        <!-- Looping through news   -->
+        {% for news_item in news %}
+      
+        <section class="my-5">
+
+            <div class="row">
+          
+              <!-- Grid column -->
+              <div class="col-lg-5 col-xl-4">
+          
+                <!-- Featured image -->
+                <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+                    <img src="{{news_item.article_image.url}}"  class="img-responsive" alt="{{news_item.title}} image">
+                <div class="mask rgba-white-slight"></div>
+                
+                </div>
+          
+              </div>
+              <!-- Grid column -->
+          
+              <!-- Grid column -->
+              <div class="col-lg-7 col-xl-8">
+                
+                <!-- Post title -->
+                <h3><a class="font-weight-bold mb-3 black-text" href="/article/{{news_item.id}}">{{ news_item.title }}</a></h3>
+                <!-- Excerpt -->
+                <p class="dark-grey-text">{{ news_item.post|truncatechars:400 }}</p>
+                <!-- Post data -->
+                <p>by <a class="font-weight-bold green-text" href="#!">{{news_item.editor.first_name}}</a>, {{news_item.pub_date|timesince}} 
+                  <span class="ml-4"></span> <span> Tags: {{ news_item.tags.all|join:", "}}
+                      
+                  </span>
+                 
+                </p>
+                <!-- Read more button -->
+              <a class="btn success-color-dark text-white btn-md" href="/article/{{news_item.id}}">Read more</a>
+              </div>
+              <!-- Grid column -->
+          
+            </div>
+            <!-- Grid row -->
+          
+            <hr class="my-5">
+          
+            
+          
+          </section>
+     
+      
+        {% empty %}
+        <div class="row">
+          <h2 class="text-center">There are No News Items</h2>
+        </div>
+        {% endfor %}
+      
+      </div>
+{% endblock %}
+
+
+
